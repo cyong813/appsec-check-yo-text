@@ -5,8 +5,8 @@ from appdef import app
 from werkzeug.utils import secure_filename
 
 # Application keys for Oxford dictionary API
-app_id = '39c9cb2a'
-app_key = '4047c80e6900d9c66c4ec63ba258acdc'
+app_id = ''
+app_key = ''
 language = 'en'
 
 def isWordInDictionary(lower_word):
