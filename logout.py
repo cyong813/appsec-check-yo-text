@@ -6,4 +6,4 @@ from appdef import app, conn
 def logout():
     session.pop('logged_in', False)
     session.pop('username', None)
-return redirect(url_for('main'))
+    return redirect(url_for('main'))

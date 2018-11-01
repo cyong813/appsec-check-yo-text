@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <p style = "margin-top:80px;font-size:16px;">
+  Hi {{ session['users'][session['username']]['first_name'] }}!
+   <a href="/logout" style="font-size:16px;text-decoration:none;">(Logout)</a>
+  </p>
+  
+  {% if error %}
+    <p class="error"><strong>Error:</strong> {{error}} </p>
+  {% endif %}
+
+  <div id ="texts">
+        {% for text in data %}
+          <div class = "text">
+            <div class = "main-text-content">
+            <div class = "info">
+              <span class="textID">
+                {{ text['id'] }}
+              </span>
+              <h1 class = "name" style="text-transform:uppercase;">
+                {{ session['users'][text['username']]['first_name'] }}
+              </h1>
+              <span class="username">({{ text['username'] }})</span>
+
+              <span class="date">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                {{ text['timest'].date() }}
+              </span>
+              <br>
+              <span class="time">
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                {{ text['timest'].time() }}
+              </span>
+
+            </div>
+            <div class = "text-body">
+                {% if (text['file_path']) %}
+                    {{ text['file_path'] }}
+                {% endif %}
+            </div>
+            <div class = "description">
+                <div class = "text-description">
+                    {{ text['content_name'] }}
+                </div>
+              <br>
+            </div>
+          </div>
+          </div>
+        {% endfor %}
+      </div>
+
+
+{% endblock %}

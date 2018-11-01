@@ -1,6 +1,6 @@
 from flask import send_from_directory, render_template, flash, redirect, session, url_for, request, g
 from appdef import app, conn
-import main, time, datetime, os
+import main, time, datetime, os, requests
 from appdef import app
 from werkzeug.utils import secure_filename
 
@@ -76,8 +76,8 @@ def checkTextProcessed():
     else:
         textID += 1
 
-    query = 'INSERT into Content (id, username, timest, txt_filepath, content_name, public) values (%s, %s, %s, %s, %s, %s)'
-    cursor.execute(query, (textID, username, timest, txt_filepath, content_name, public))
+    query = 'INSERT into Content (id, username, timest, txt_filepath, content_name) values (%s, %s, %s, %s, %s, %s)'
+    cursor.execute(query, (textID, username, timest, txt_filepath, content_name))
     conn.commit()
     cursor.close()
     return redirect(url_for('main'))
