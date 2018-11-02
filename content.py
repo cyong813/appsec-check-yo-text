@@ -72,6 +72,26 @@ def checkTextProcessed():
         # read the file and retrieve text
         with open(os.path.join(app.config['UPLOAD_FOLDER'], submitted_file), 'r') as input_file:
             file_text = input_file.read()
+        
+        wrong_words = set()
+        word_list = file_text.split() # extract all words into arr
+        print(word_list)
+        
+        for word in word_list:
+            if (isWordInDictionary(word.lower()) != 200):
+                wrong_words.add(word)
+
+        # retrieve set of incorrectly spelled words
+        wrong_word_list = str(wrong_words)
+
+        # fix file_text to make html (bold red for incorrect words)
+        result_text = ""
+        for word in file_text:
+            if word in wrong_word_list:
+                result_text += "<strong><font color='red'>"+ word +"</font></strong> "
+            else:
+                result_text += word
+        print(result_text)
 
     username = session['username']
     cursor = conn.cursor()
@@ -85,8 +105,8 @@ def checkTextProcessed():
     else:
         textID += 1
 
-    query = 'INSERT into Content (id, username, timest, file_path, content_name, file_text) values (%s, %s, %s, %s, %s, %s)'
-    cursor.execute(query, (textID, username, timest, txt_filepath, content_name, file_text))
+    query = 'INSERT into Content (id, username, timest, file_path, content_name, file_text, wrong_word_list) values (%s, %s, %s, %s, %s, %s, %s)'
+    cursor.execute(query, (textID, username, timest, txt_filepath, content_name, result_text, wrong_word_list))
     conn.commit()
     cursor.close()
     return redirect(url_for('main'))

@@ -10,17 +10,27 @@ def add_header(response):
 
 @app.route('/')
 def main():
-    #return render_template('result.html', data=session['users'])
     # if the user is logged in, have all the used textfiles available to the user display
     if (session.get('logged_in') == True):
-        # query to get all the posts available to the user
+        # query to get all the texts available to the user & feed to dictionary API
+        textQuery = 'SELECT content.id, content.username, content.timest, content.file_path, content.content_name, content.file_text\
+                    FROM content\
+                    WHERE content.username= %s\
+                    ORDER BY timest desc'
 
         cursor = conn.cursor()
         username = session['username']
 
+        #ids of all the visible posts
+        cursor.execute(textQuery, (username))
+        textData = cursor.fetchall()
+        cursor.close()
+
         userInfo.initiate()
+
         
-        return render_template("index.html")
+
+        return render_template("index.html", data=textData)
     return render_template("index.html")
 
 # function to make queries to database to acquire info
