@@ -86,11 +86,11 @@ def checkTextProcessed():
 
         # fix file_text to make html (bold red for incorrect words)
         result_text = ""
-        for word in file_text:
+        for word in word_list:
             if word in wrong_word_list:
-                result_text += "<strong><font color='red'>"+ word +"</font></strong> "
+                result_text += " <strong><font color='red'>"+ word +"</font></strong> "
             else:
-                result_text += word
+                result_text += " " + word + " "
         print(result_text)
 
     username = session['username']
