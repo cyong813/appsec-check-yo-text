@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask_login import login_user, logout_user, current_user, login_required
-from appdef import app, conn
+from main_app import app, conn
 
 @app.route('/login')
 def login():
@@ -13,8 +13,6 @@ def loginAuth():
     password = request.form['password']
 
     cursor = conn.cursor()
-    # username = ml4963
-    # password = wildestdreams
     query = 'SELECT * FROM person WHERE username = %s and password = SHA2(%s, 256)'
     cursor.execute(query, (username, password))
     #stores results in var

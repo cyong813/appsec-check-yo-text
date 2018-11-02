@@ -6,7 +6,7 @@
      <a href="/logout" style="font-size:16px;text-decoration:none;">(Logout)</a>
     </p>
 
-    <h1>Posts</h1>
+    <h1>Spellchecks</h1>
     <nav id="friends">
       <a href="/texts">View Previous Texts</a>
       <a href="/checkText/">New Spellcheck</a>
@@ -15,11 +15,11 @@
     {% if data|length == 0 %}
         You haven't spellchecked yet! <a href="/checkText/">Spellcheck now?</a>
     {% else %}
-    <div id ="texts">
+    <div id="texts">
       {% for text in data %}
-        <div class = "text">
-          <div class = "main-text-content">
-          <div class = "info">
+        <div class="text">
+          <div class="main-text-content">
+          <div class="info">
             <span class="textID">
               {{ text['id'] }}
             </span>
@@ -33,13 +33,13 @@
               {{ text['timest'].time() }}
             </span>
           </div>
-          <div class = "text-body">
+          <div class="text-body">
             {% if (text['file_path']) %}
-              {{ text['file_path'] }} 
+              {{ text['file_text'] }} 
             {% endif %}
           </div>
-          <div class = "description">
-            <div class = "text-description">
+          <div class="description">
+            <div class="text-description">
               {{ text['content_name'] }}
             </div>
             <br>

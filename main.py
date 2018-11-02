@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
-from appdef import app, conn
+from main_app import app, conn
 import userInfo
 
 @app.after_request

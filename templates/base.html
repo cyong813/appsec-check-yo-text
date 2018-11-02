@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>Check Yo Text</title>
-  <link rel = "stylesheet" href = "{{ url_for('static', filename='css/styles.css') }}">
-  <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel = "shortcut icon" href = "">
+  <link rel="shortcut icon" href="">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
 
         <div id="navigation-left" style="margin-bottom:100px;">
           <div id="logo">
-                <img src="/static/brand_assets/logo3.png" style="width:150px; height:auto; margin-top:-5px;">
+                <img src="" style="width:150px; height:auto; margin-top:-5px;">
               </div>
               <div id="messaging">
                 <a class="navbar-brand" href="/" style="font-size:36px;margin-left:2px;margin-top:22px;position:absolute;">Check Yo Text</a>
@@ -29,7 +29,7 @@
       </div>
     </div>
   {% else %}
-  <div class="container" id = "mainContent" style="width:610px;">
+  <div class="container" id="mainContent" style="width:610px;">
 		<div id = "navigation">
 			<div id="navigation-left">
 				<div id="logo">
@@ -42,9 +42,7 @@
 			</div>
 			<div id="navigation-right">
 				<a href="/">home</a>
-				<a href="/tags">tags</a>
-				<a href="/friends">friends</a>
-				<a href="/posts">posts</a>
+				<a href="/texts">texts</a>
 			</div>
 		</div>
     {% block content %}{% endblock %}

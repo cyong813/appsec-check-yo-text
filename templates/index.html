@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-  <p style = "margin-top:80px;font-size:16px;">
-  Hi {{ session['users'][session['username']]['first_name'] }}!
-   <a href="/logout" style="font-size:16px;text-decoration:none;">(Logout)</a>
+  <p style="margin-top:80px;font-size:16px;">
+    Hi {{ session['users'][session['username']]['first_name'] }}!
+    <a href="/logout" style="font-size:16px;text-decoration:none;">(Logout)</a>
   </p>
   
   {% if error %}
@@ -12,13 +12,13 @@
 
   <div id ="texts">
         {% for text in data %}
-          <div class = "text">
-            <div class = "main-text-content">
-            <div class = "info">
+          <div class="text">
+            <div class="main-text-content">
+            <div class="info">
               <span class="textID">
                 {{ text['id'] }}
               </span>
-              <h1 class = "name" style="text-transform:uppercase;">
+              <h1 class="name" style="text-transform:uppercase;">
                 {{ session['users'][text['username']]['first_name'] }}
               </h1>
               <span class="username">({{ text['username'] }})</span>
@@ -34,13 +34,13 @@
               </span>
 
             </div>
-            <div class = "text-body">
+            <div class="text-body">
                 {% if (text['file_path']) %}
                     {{ text['file_path'] }}
                 {% endif %}
             </div>
-            <div class = "description">
-                <div class = "text-description">
+            <div class="description">
+                <div class="text-description">
                     {{ text['content_name'] }}
                 </div>
               <br>

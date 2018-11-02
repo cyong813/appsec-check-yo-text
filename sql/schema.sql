@@ -1,10 +1,10 @@
 CREATE TABLE Person (
 	username VARCHAR (50),
-	password VARCHAR (50),
+	password VARCHAR (64),
 	first_name VARCHAR (50),
 	last_name VARCHAR (50),
 	PRIMARY KEY (username)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE Content (
 	id INT AUTO_INCREMENT,
@@ -12,9 +12,10 @@ CREATE TABLE Content (
 	timest TIMESTAMP,
 	file_path VARCHAR (100),
 	content_name VARCHAR (50),
+	file_text VARCHAR (2500),
 	PRIMARY KEY (id),
 	FOREIGN KEY (username) REFERENCES Person (username)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE Wrong (
 	id INT,
@@ -22,4 +23,4 @@ CREATE TABLE Wrong (
 	PRIMARY KEY (id, username_from),
 	FOREIGN KEY (username_from) REFERENCES Person (username),
 	FOREIGN KEY (id) REFERENCES Content (id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

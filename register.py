@@ -1,11 +1,10 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask_login import login_user, logout_user, current_user, login_required
-from appdef import app, conn
+from main_app import app, conn
 import userInfo
 
 @app.route('/register')
 def register():
-    #return render_template("result.html", data=session)
     userInfo.initiate()
     return render_template('register.html')
 
@@ -47,4 +46,4 @@ def registerProcessing():
     session['users'][username]['first_name'] = firstname
     session['users'][username]['last_name'] = lastname
     
-return redirect(url_for('main', username = session['username']))
+    return redirect(url_for('main', username = session['username']))

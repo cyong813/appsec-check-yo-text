@@ -1,8 +1,3 @@
 The spellchecker repository is here: https://github.com/cyong813/appsec-check-yo-text
-It is very very barebones, and will definitely improve on front-end design.
-This is a Python Flask application. 
 
-instructions:
-1. write any word/words in the static/test.txt.
-2. download repo and open cmd, go into app in terminal and type: flask run. It will print something like: running on http://127.0.0.1:5000
-3. The initial route (/) just prints out the test.txt file. Go to /check to see the incorrect words
+WINDOWS: $env:FLASK_APP = "main_app.py"

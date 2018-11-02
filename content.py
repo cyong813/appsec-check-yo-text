@@ -1,7 +1,6 @@
 from flask import send_from_directory, render_template, flash, redirect, session, url_for, request, g
-from appdef import app, conn
+from main_app import app, conn
 import main, time, datetime, os, requests
-from appdef import app
 from werkzeug.utils import secure_filename
 
 # Application keys for Oxford dictionary API
@@ -55,14 +54,24 @@ def checkTextProcessed():
 
     txt_filepath = '/static/'
 
-    if not allowed_file(request.files['text'].filename):
+    try:
+        file = request.files['text']
+    except:
+        file = None
+
+    if not allowed_file(file.filename):
         error = 'Please attach text files only.'
         return render_template('checkText.html', error=error)
 
-    if request.method == 'POST' and 'text' in request.files:
-        submitted_file = request.files['text']
-        filename = submitted_file.save(request.files['text'])
-        txt_filepath = txt_filepath + filename
+    if request.method == 'POST' and file != None:
+        # save the text file in static folder
+        submitted_file = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], submitted_file))
+        txt_filepath = txt_filepath + submitted_file
+
+        # read the file and retrieve text
+        with open(os.path.join(app.config['UPLOAD_FOLDER'], submitted_file), 'r') as input_file:
+            file_text = input_file.read()
 
     username = session['username']
     cursor = conn.cursor()
@@ -76,8 +85,8 @@ def checkTextProcessed():
     else:
         textID += 1
 
-    query = 'INSERT into Content (id, username, timest, txt_filepath, content_name) values (%s, %s, %s, %s, %s, %s)'
-    cursor.execute(query, (textID, username, timest, txt_filepath, content_name))
+    query = 'INSERT into Content (id, username, timest, file_path, content_name, file_text) values (%s, %s, %s, %s, %s, %s)'
+    cursor.execute(query, (textID, username, timest, txt_filepath, content_name, file_text))
     conn.commit()
     cursor.close()
     return redirect(url_for('main'))
