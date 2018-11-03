@@ -35,7 +35,7 @@ def registerProcessing():
     firstname = request.form['firstname']
     lastname = request.form['lastname']
     cursor = conn.cursor()
-    query = 'INSERT INTO person (username, password, first_name, last_name) VALUES (%s, SHA2(%s, 256), %s, %s)'
+    query = 'INSERT INTO Person (username, password, first_name, last_name) VALUES (%s, SHA2(%s, 256), %s, %s)'
     cursor.execute(query, (username, password, firstname, lastname))
     conn.commit()
     cursor.close()

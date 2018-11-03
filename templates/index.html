@@ -32,18 +32,17 @@
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
                 {{ text['timest'].time() }}
               </span>
-
-            </div>
-            <div class="text-body">
-                {% if (text['file_path']) %}
-                    {{ text['file_path'] }}
-                {% endif %}
             </div>
             <div class="description">
-                <div class="text-description">
-                    {{ text['content_name'] }}
-                </div>
-              <br>
+              <div class="text-description">
+                  {{ text['content_name'] }}
+              </div>
+            <br/>
+          </div>
+            <div class="text-body">
+                {% if (text['file_path']) %}
+                    {{ text['file_text'] }}
+                {% endif %}
             </div>
           </div>
           </div>

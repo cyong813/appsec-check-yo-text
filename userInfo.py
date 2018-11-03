@@ -3,7 +3,7 @@ from main_app import app, conn
 
 def initiate():
     # get all the users
-    userQuery = 'SELECT username, first_name, last_name FROM person'
+    userQuery = 'SELECT username, first_name, last_name FROM Person'
     userData = getData(userQuery)
     storeUsers(userData)
 

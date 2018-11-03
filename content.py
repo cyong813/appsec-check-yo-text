@@ -4,8 +4,8 @@ import main, time, datetime, os, requests
 from werkzeug.utils import secure_filename
 
 # Application keys for Oxford dictionary API
-app_id = ''
-app_key = ''
+app_id = '39c9cb2a'
+app_key = '4047c80e6900d9c66c4ec63ba258acdc'
 language = 'en'
 
 def isWordInDictionary(lower_word):
@@ -26,7 +26,7 @@ def allowed_file(filename):
 def texts():
     if (not session.get('logged_in')):
         return redirect(url_for('main'))
-    query = "SELECT * FROM content WHERE username=%s"
+    query = "SELECT * FROM Content WHERE username=%s"
     cursor = conn.cursor()
     cursor.execute(query, (session['username']))
     data = cursor.fetchall()
@@ -88,10 +88,10 @@ def checkTextProcessed():
         result_text = ""
         for word in word_list:
             if word in wrong_word_list:
-                result_text += " <strong><font color='red'>"+ word +"</font></strong> "
+                result_text += " [ " + word + " ] "
             else:
                 result_text += " " + word + " "
-        print(result_text)
+        # print(result_text)
 
     username = session['username']
     cursor = conn.cursor()

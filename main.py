@@ -13,9 +13,9 @@ def main():
     # if the user is logged in, have all the used textfiles available to the user display
     if (session.get('logged_in') == True):
         # query to get all the texts available to the user & feed to dictionary API
-        textQuery = 'SELECT content.id, content.username, content.timest, content.file_path, content.content_name, content.file_text\
-                    FROM content\
-                    WHERE content.username= %s\
+        textQuery = 'SELECT Content.id, Content.username, Content.timest, Content.file_path, Content.content_name, Content.file_text, Content.wrong_word_list\
+                    FROM Content\
+                    WHERE Content.username= %s\
                     ORDER BY timest desc'
 
         cursor = conn.cursor()
@@ -27,8 +27,6 @@ def main():
         cursor.close()
 
         userInfo.initiate()
-
-        
 
         return render_template("index.html", data=textData)
     return render_template("index.html")
