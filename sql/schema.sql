@@ -13,15 +13,13 @@ CREATE TABLE Content (
 	file_path VARCHAR (100),
 	content_name VARCHAR (50),
 	file_text VARCHAR (2500),
-	wrong_word_list VARCHAR (2500),
 	PRIMARY KEY (id),
 	FOREIGN KEY (username) REFERENCES Person (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE Wrong (
 	id INT,
-	username_from VARCHAR (50),
-	PRIMARY KEY (id, username_from),
-	FOREIGN KEY (username_from) REFERENCES Person (username),
+	incorrect_word VARCHAR (25),
+	PRIMARY KEY (id, incorrect_word),
 	FOREIGN KEY (id) REFERENCES Content (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

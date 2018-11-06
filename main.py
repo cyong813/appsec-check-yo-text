@@ -13,10 +13,12 @@ def main():
     # if the user is logged in, have all the used textfiles available to the user display
     if (session.get('logged_in') == True):
         # query to get all the texts available to the user & feed to dictionary API
-        textQuery = 'SELECT Content.id, Content.username, Content.timest, Content.file_path, Content.content_name, Content.file_text, Content.wrong_word_list\
+        textQuery = 'SELECT Content.id, Content.username, Content.timest, Content.file_path, Content.content_name, Content.file_text\
                     FROM Content\
                     WHERE Content.username= %s\
                     ORDER BY timest desc'
+
+        spellQuery = 'SELECT Wrong.id, Wrong.incorrect_word FROM Wrong'
 
         cursor = conn.cursor()
         username = session['username']
@@ -24,11 +26,13 @@ def main():
         #ids of all the visible posts
         cursor.execute(textQuery, (username))
         textData = cursor.fetchall()
+        cursor.execute(spellQuery)
+        spellData = cursor.fetchall()
         cursor.close()
 
         userInfo.initiate()
 
-        return render_template("index.html", data=textData)
+        return render_template("index.html", data=textData, spellData=spellData)
     return render_template("index.html")
 
 # function to make queries to database to acquire info
