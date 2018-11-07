@@ -6,13 +6,19 @@ from werkzeug.utils import secure_filename
 # Application keys for Oxford dictionary API
 app_id = ''
 app_key = ''
-language = 'en'
+language = ''
 
 def isWordInDictionary(lower_word):
     url = ('https://od-api.oxforddictionaries.com/api/v1/inflections/'
            + language + '/' + lower_word)
     r = requests.get(url, headers={'app_id': app_id, 'app_key': app_key})
     return r.status_code
+
+def searchWordInDictionary(lower_word):
+    url = ('https://od-api.oxforddictionaries.com/api/v1/search/'
+           + language + '/' + lower_word)
+    r = requests.get(url, headers={'app_id': app_id, 'app_key': app_key})
+    return r
 
 ALLOWED_EXTENSIONS = set(['txt'])
 app.config['UPLOAD_FOLDER'] = 'static'

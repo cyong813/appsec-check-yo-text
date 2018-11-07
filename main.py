@@ -28,6 +28,7 @@ def main():
         textData = cursor.fetchall()
         cursor.execute(spellQuery)
         spellData = cursor.fetchall()
+        print(spellData)
         cursor.close()
 
         userInfo.initiate()

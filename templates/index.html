@@ -41,7 +41,14 @@
           </div>
             <div class="text-body">
                 {% if (text['file_path']) %}
-                    {{ text['file_text'] }}
+                  {% for word in text['file_text'].split(' ') %}
+                    {% for wrong in spellData %}
+                      {% if (word == wrong['incorrect_word'] and text['id'] == wrong['id']) %}
+                        <strong style="color: red;">[ {{ word }} ] --></strong>
+                      {% endif %}
+                    {% endfor %}
+                    {{ word }}
+                  {% endfor %}
                 {% endif %}
             </div>
           </div>
