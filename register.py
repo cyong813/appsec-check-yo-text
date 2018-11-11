@@ -14,16 +14,41 @@ def registerProcessing():
     if username in session['users'].keys():
         errormsg = "Username already taken."
         return render_template('register.html', error = errormsg)
-    if len(username) < 4:
-        errormsg = "Username is too short. Must be more than 3 characters."
+    if len(username) < 6:
+        errormsg = "Username is too short. Must be more than 5 characters."
         return render_template('register.html', error = errormsg)
     elif len(username) > 50:
         errormsg = "Username and/or other fields are too long. 50 characters max."
         return render_template('register.html', error = errormsg)
     password = request.form['password']
-    if len(password) < 4:
-        errormsg = "Password is too short (needs to be greater than 3 characters)."
+    if len(password) < 8:
+        errormsg = "Password is too short (needs to be greater than 7 characters)."
         return render_template('register.html', error = errormsg)
+
+    upperCase = 0
+    lowerCase = 0
+    num = 0
+    for x in password:
+        if x.isUpper():
+            upperCase = upperCase + 1
+        else if x.islower():
+            lowerCase = lowerCase + 1
+        
+        else if x.isdigit():
+            num = num + 1
+
+    if upperCase = 0:
+        errormsg = "Password needs to contain at least one uppercase letter."
+        return render_template('register.html', error = errormsg)
+    if lowerCase = 0:
+        errormsg = "Password needs to contain at least one lowercase letter."
+        return render_template('register.html', error = errormsg)
+
+    if num = 0:
+        errormsg = "Password needs to contain at least one number."
+        return render_template('register.html', error = errormsg)
+
+
     elif len(password) > 50:
         errormsg = "Password is too long. 50 characters max."
         return render_template('register.html', error = errormsg)
