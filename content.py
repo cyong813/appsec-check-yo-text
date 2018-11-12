@@ -82,7 +82,6 @@ def checkTextProcessed():
             file_text = input_file.read()
         
         word_list = file_text.split() # extract all words into arr
-        # print(word_list)
         
         for word in word_list:
             if (isWordInDictionary(word.lower()) != 200):

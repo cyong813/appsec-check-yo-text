@@ -20,6 +20,7 @@
     {% endif %}
       <form action="/checkText/processing" method="POST" enctype="multipart/form-data">
         <div id="question1">
+          <input name="_csrf_token" type="hidden" value="{{ csrf_token() }}"/>
           <p style="font-size:14px;">Enter a text title</p>
           <input type="text" name="content_name" placeholder="content name" required />
           <p style="font-size:14px;">Upload your text</p>

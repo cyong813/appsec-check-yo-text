@@ -29,29 +29,26 @@ def registerProcessing():
     lowerCase = 0
     num = 0
     for x in password:
-        if x.isUpper():
+        if x.isupper():
             upperCase = upperCase + 1
-        else if x.islower():
+        elif x.islower():
             lowerCase = lowerCase + 1
-        
-        else if x.isdigit():
+        elif x.isdigit():
             num = num + 1
 
-    if upperCase = 0:
+    if upperCase == 0:
         errormsg = "Password needs to contain at least one uppercase letter."
         return render_template('register.html', error = errormsg)
-    if lowerCase = 0:
+    if lowerCase == 0:
         errormsg = "Password needs to contain at least one lowercase letter."
         return render_template('register.html', error = errormsg)
-
-    if num = 0:
+    if num == 0:
         errormsg = "Password needs to contain at least one number."
         return render_template('register.html', error = errormsg)
-
-
     elif len(password) > 50:
         errormsg = "Password is too long. 50 characters max."
         return render_template('register.html', error = errormsg)
+
     retype = request.form['retype']
     if retype != password:
         errormsg = "Passwords do not match."

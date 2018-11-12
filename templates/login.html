@@ -21,6 +21,7 @@
 
       <div id="mainContent" style="position:absolute; width:440px;margin-top:100px;">
         <form action="/loginAuth" method="POST" style="text-align:center;">
+          <input name="_csrf_token" type="hidden" value="{{ csrf_token() }}"/>
           <input type="username" name="username" placeholder="enter your username" required/> <br/>
           <input type="password" name="password" placeholder="enter your password" required style="margin-left:-6px;margin-bottom:20px;"/><br/>
           <input type="submit" value="Login" class="button"/>

@@ -19,7 +19,7 @@ def loginAuth():
     data = cursor.fetchone()
     cursor.close()
 
-    if(data):
+    if (data):
         session['logged_in'] = True
         session['username'] = username
         return redirect(url_for('main', username=session['username']))
