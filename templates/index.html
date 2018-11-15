@@ -19,7 +19,7 @@
                 {{ text['id'] }}
               </span>
               <h1 class="name" style="text-transform:uppercase;">
-                {{ session['users'][text['username']]['first_name'] }}
+                {{ text['content_name'] }}
               </h1>
               <span class="username">({{ text['username'] }})</span>
 
@@ -33,12 +33,6 @@
                 {{ text['timest'].time() }}
               </span>
             </div>
-            <div class="description">
-              <div class="text-description">
-                  {{ text['content_name'] }}
-              </div>
-            <br/>
-          </div>
             <div class="text-body">
                 {% if (text['file_path']) %}
                   {% for word in text['file_text'].split(' ') %}

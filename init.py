@@ -9,11 +9,6 @@ from datetime import timedelta
 # os.urandom(24)
 app.secret_key = ''
 
-@app.before_request
-def make_session_permanent():
-    session.permanent = True
-    app.permanent_session_lifetime = timedelta(minutes=30)
-
 def csrf_protect():
     if request.method == "POST":
         token = session.pop('_csrf_token', None)

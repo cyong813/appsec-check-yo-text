@@ -4,6 +4,7 @@ from main_app import app, conn
 
 @app.route('/logout')
 def logout():
+    session.permanent = False
     session.pop('logged_in', False)
     session.pop('username', None)
     return redirect(url_for('main'))

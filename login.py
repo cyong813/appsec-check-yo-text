@@ -13,7 +13,7 @@ def loginAuth():
     password = request.form['password']
 
     cursor = conn.cursor()
-    query = 'SELECT * FROM person WHERE username = %s and password = SHA2(%s, 256)'
+    query = 'SELECT * FROM Person WHERE username = %s and password = SHA2(%s, 256)'
     cursor.execute(query, (username, password))
     #stores results in var
     data = cursor.fetchone()
@@ -22,6 +22,7 @@ def loginAuth():
     if (data):
         session['logged_in'] = True
         session['username'] = username
+        session.permanent = False
         return redirect(url_for('main', username=session['username']))
     else:
         error = "Invalid login or username/password"
