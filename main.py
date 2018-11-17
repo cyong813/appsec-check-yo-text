@@ -20,15 +20,18 @@ def main():
 
         spellQuery = 'SELECT Wrong.id, Wrong.incorrect_word FROM Wrong'
 
-        cursor = conn.cursor()
-        username = session['username']
+        try:
+            cursor = conn.cursor()
+            username = session['username']
 
-        #ids of all the visible posts
-        cursor.execute(textQuery, (username))
-        textData = cursor.fetchall()
-        cursor.execute(spellQuery)
-        spellData = cursor.fetchall()
-        cursor.close()
+            #ids of all the visible posts
+            cursor.execute(textQuery, (username))
+            textData = cursor.fetchall()
+            cursor.execute(spellQuery)
+            spellData = cursor.fetchall()
+            cursor.close()
+        except pymysql.Error as err:
+            app.logger.error(err)
 
         userInfo.initiate()
 

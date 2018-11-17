@@ -1,0 +1,48 @@
+[INFO] 2018-11-17 00:31:28,825 flask.app main_app.py:23 - MYSQL DB successfully connected
+[INFO] 2018-11-17 00:31:28,914 werkzeug _internal.py:88 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+[INFO] 2018-11-17 00:31:39,629 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:31:39] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:31:39,821 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:31:39] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+[INFO] 2018-11-17 00:31:40,030 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:31:40] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:32:41,993 flask.app main_app.py:23 - MYSQL DB successfully connected
+[INFO] 2018-11-17 00:32:43,914 flask.app main_app.py:27 - Mouse clicked at (384, 767) with Button.left
+[INFO] 2018-11-17 00:32:45,534 flask.app main_app.py:27 - Mouse clicked at (428, 78) with Button.left
+[INFO] 2018-11-17 00:32:48,049 flask.app main_app.py:27 - Mouse clicked at (1096, 518) with Button.left
+[INFO] 2018-11-17 00:36:28,852 flask.app main_app.py:23 - MYSQL DB successfully connected
+[INFO] 2018-11-17 00:36:28,942 werkzeug _internal.py:88 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+[INFO] 2018-11-17 00:36:34,598 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:36:34] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:36:34,798 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:36:34] "[37mGET /static/css/styles.css HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:36:35,120 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:36:35] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:36:39,065 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:36:39] "[37mGET /login HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:36:39,316 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:36:39] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+[INFO] 2018-11-17 00:37:02,239 flask.app login.py:27 - heyheyhey logged in successfully
+[INFO] 2018-11-17 00:37:02,245 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:37:02] "[32mPOST /loginAuth HTTP/1.1[0m" 302 -
+[INFO] 2018-11-17 00:37:02,279 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:37:02] "[37mGET /?username=heyheyhey HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:37:02,601 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:37:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+[INFO] 2018-11-17 00:37:02,789 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:37:02] "[37mGET /?username=heyheyhey HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:37:13,532 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:37:13] "[32mGET /logout HTTP/1.1[0m" 302 -
+[INFO] 2018-11-17 00:37:13,557 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:37:13] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:37:13,780 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:37:13] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+[INFO] 2018-11-17 00:37:14,086 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:37:14] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:38:30,406 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:38:30] "[37mGET /login HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:38:30,490 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:38:30] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+[INFO] 2018-11-17 00:38:51,069 flask.app main_app.py:21 - MYSQL DB successfully connected
+[INFO] 2018-11-17 00:39:05,737 flask.app main_app.py:21 - MYSQL DB successfully connected
+[INFO] 2018-11-17 00:44:42,611 flask.app main_app.py:21 - MYSQL DB successfully connected
+[INFO] 2018-11-17 00:47:04,480 flask.app main_app.py:21 - MYSQL DB successfully connected
+[INFO] 2018-11-17 00:47:52,744 flask.app main_app.py:21 - MYSQL DB successfully connected
+[INFO] 2018-11-17 00:47:52,834 werkzeug _internal.py:88 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+[INFO] 2018-11-17 00:48:09,154 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:48:09] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:48:09,609 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:48:09] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+[INFO] 2018-11-17 00:48:09,877 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:48:09] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:48:12,335 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:48:12] "[37mGET /login HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:48:12,724 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:48:12] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+[INFO] 2018-11-17 00:48:19,040 flask.app login.py:27 - heyheyhey logged in successfully
+[INFO] 2018-11-17 00:48:19,046 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:48:19] "[32mPOST /loginAuth HTTP/1.1[0m" 302 -
+[INFO] 2018-11-17 00:48:19,079 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:48:19] "[37mGET /?username=heyheyhey HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:48:19,463 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:48:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+[INFO] 2018-11-17 00:48:19,782 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:48:19] "[37mGET /?username=heyheyhey HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:49:02,438 flask.app logout.py:10 - Current user logged out successfully
+[INFO] 2018-11-17 00:49:02,441 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:49:02] "[32mGET /logout HTTP/1.1[0m" 302 -
+[INFO] 2018-11-17 00:49:02,467 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:49:02] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO] 2018-11-17 00:49:02,687 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:49:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+[INFO] 2018-11-17 00:49:02,939 werkzeug _internal.py:88 - 127.0.0.1 - - [17/Nov/2018 00:49:02] "[37mGET / HTTP/1.1[0m" 200 -

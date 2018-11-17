@@ -12,18 +12,23 @@ def loginAuth():
     username = request.form['username']
     password = request.form['password']
 
-    cursor = conn.cursor()
-    query = 'SELECT * FROM Person WHERE username = %s and password = SHA2(%s, 256)'
-    cursor.execute(query, (username, password))
-    #stores results in var
-    data = cursor.fetchone()
-    cursor.close()
+    try:
+        cursor = conn.cursor()
+        query = 'SELECT * FROM Person WHERE username = %s and password = SHA2(%s, 256)'
+        cursor.execute(query, (username, password))
+        #stores results in var
+        data = cursor.fetchone()
+        cursor.close()
 
-    if (data):
-        session['logged_in'] = True
-        session['username'] = username
-        session.permanent = False
-        return redirect(url_for('main', username=session['username']))
-    else:
-        error = "Invalid login or username/password"
-    return render_template('login.html', error=error)
+        if (data):
+            session['logged_in'] = True
+            session['username'] = username
+            session.permanent = False
+            app.logger.info('%s logged in successfully', username)
+            return redirect(url_for('main', username=session['username']))
+        else:
+            error = "Invalid login or username/password"
+            app.logger.info('%s failed to log in', username)
+        return render_template('login.html', error=error)
+    except pymysql.Error as err:
+        app.logger.error(err)

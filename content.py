@@ -32,12 +32,15 @@ def allowed_file(filename):
 def texts():
     if (not session.get('logged_in')):
         return redirect(url_for('main'))
-    query = "SELECT * FROM Content WHERE username=%s"
-    cursor = conn.cursor()
-    cursor.execute(query, (session['username']))
-    data = cursor.fetchall()
-    cursor.close()
-    return render_template('texts.html', data=data)
+    try:
+        query = "SELECT * FROM Content WHERE username=%s"
+        cursor = conn.cursor()
+        cursor.execute(query, (session['username']))
+        data = cursor.fetchall()
+        cursor.close()
+        return render_template('texts.html', data=data)
+    except pymysql.Error as err:
+        app.logger.error(err)
 
 # user pastes text here 
 @app.route('/checkText/')
@@ -56,6 +59,7 @@ def checkTextProcessed():
 
     if len(content_name) > 50:
         error = 'Title is too long. 50 characters max.'
+        app.logger.warning('ERR: Long title error (%s)', content_name)
         return render_template('checkText.html', error=error)
 
     txt_filepath = '/static/'
@@ -67,6 +71,7 @@ def checkTextProcessed():
 
     if not allowed_file(file.filename):
         error = 'Please attach text files only.'
+        app.logger.warning('ERR: Not a text file (%s)', file.filename)
         return render_template('checkText.html', error=error)
 
     wrong_words = set()
@@ -87,28 +92,32 @@ def checkTextProcessed():
             if (isWordInDictionary(word.lower()) != 200):
                 wrong_words.add(word)
 
-    username = session['username']
-    cursor = conn.cursor()
-    timest = datetime.datetime.now().strftime('%y-%m-%d %H:%M:%S')
-    query = 'SELECT max(id) as textID FROM Content' #to get the id of this post
-    cursor.execute(query)
-    textID = cursor.fetchone()['textID'] # + 1
-    
-    if (textID is None):
-        textID = 1
-    else:
-        textID += 1
+    username = session['username'] 
+    try:
+        cursor = conn.cursor()
+        timest = datetime.datetime.now().strftime('%y-%m-%d %H:%M:%S')
+        query = 'SELECT max(id) as textID FROM Content' #to get the id of this post
+        cursor.execute(query)
+        textID = cursor.fetchone()['textID'] # + 1
+        
+        if (textID is None):
+            textID = 1
+        else:
+            textID += 1
 
-    query = 'INSERT into Content (id, username, timest, file_path, content_name, file_text) values (%s, %s, %s, %s, %s, %s)'
-    cursor.execute(query, (textID, username, timest, txt_filepath, content_name, file_text))
+        query = 'INSERT into Content (id, username, timest, file_path, content_name, file_text) values (%s, %s, %s, %s, %s, %s)'
+        cursor.execute(query, (textID, username, timest, txt_filepath, content_name, file_text))
 
-    # retrieve set of incorrectly spelled words and push into Wrong 
-    for word in wrong_words:
-        query = 'INSERT into Wrong (id, incorrect_word) values (%s, %s)'
-        cursor.execute(query, (textID, word))
+        # retrieve set of incorrectly spelled words and push into Wrong 
+        for word in wrong_words:
+            query = 'INSERT into Wrong (id, incorrect_word) values (%s, %s)'
+            cursor.execute(query, (textID, word))
 
-    conn.commit()
-    cursor.close()
+        conn.commit()
+        cursor.close()
+    except pymysql.Error as err:
+        app.logger.error(err)
+
     return redirect(url_for('main'))
 
 def getData(query):

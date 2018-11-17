@@ -7,4 +7,5 @@ def logout():
     session.permanent = False
     session.pop('logged_in', False)
     session.pop('username', None)
+    app.logger.info('Current user logged out successfully')
     return redirect(url_for('main'))
