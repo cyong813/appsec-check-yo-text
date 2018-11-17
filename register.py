@@ -80,6 +80,7 @@ def registerProcessing():
         session['users'][username]['first_name'] = firstname
         session['users'][username]['last_name'] = lastname
         
+        app.logger.info('User (%s) registered successfully', username)
         return redirect(url_for('main', username = session['username']))
     except pymysql.Error as err:
         app.logger.error(err)
