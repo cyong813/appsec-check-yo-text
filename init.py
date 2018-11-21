@@ -23,6 +23,7 @@ def generate_csrf_token():
 app.add_template_global(name='csrf_token', f=generate_csrf_token)
 
 if __name__ == "__main__":
-    app.run('localhost', 5000, debug=True)
+    # add ssl to encrypt to https (req pyopenssl)
+    app.run(host='0.0.0.0', port=5000, threaded=True, debug=True, ssl_context='adhoc')
     with Listener(on_click=on_click, on_scroll=on_scroll) as listener:
         listener.join()
