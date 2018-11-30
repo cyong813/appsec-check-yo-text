@@ -3,6 +3,7 @@ from main_app import app
 import main, login, logout
 import pymysql.cursors
 from datetime import timedelta
+from pynput import mouse
 
 # created using 
 # import os
@@ -22,8 +23,25 @@ def generate_csrf_token():
 
 app.add_template_global(name='csrf_token', f=generate_csrf_token)
 
+# pynput mouse movement tracking
+def on_click(x, y, button, pressed):
+    app.logger.info('{0} at {1}'.format(
+        'Pressed' if pressed else 'Released',
+        (x, y)))
+    if not pressed:
+        # Stop listener
+        return False
+
+def on_scroll(x, y, dx, dy):
+    app.logger.info('Scrolled {0} at {1}'.format(
+        'down' if dy < 0 else 'up',
+        (x, y)))
+
 if __name__ == "__main__":
     # add ssl to encrypt to https (req pyopenssl)
     app.run(host='0.0.0.0', port=5000, threaded=True, debug=True, ssl_context='adhoc')
-    with Listener(on_click=on_click, on_scroll=on_scroll) as listener:
+    # Collect events until released
+    with mouse.Listener(
+            on_click=on_click,
+            on_scroll=on_scroll) as listener:
         listener.join()
