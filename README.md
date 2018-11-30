@@ -1,5 +1,7 @@
 # Check Yo' Text
-UPDATED: 11/21/18
+
+UPDATED: 11/30/18
+
 App security class project. A Flask Python spell-checking application that reviews text files.
 
 Features:
@@ -16,7 +18,7 @@ Security Features:
 
 How to Use:
 
-    `WINDOWS: (***NOTE: Very janky. Preferably use Linux instead.***)
+    WINDOWS: (***NOTE: Very janky. Preferably use Linux instead.***)
         pip install pyopenssl pynput flask requests pymysql flask_login
         python init.py`
     
@@ -25,4 +27,4 @@ How to Use:
         . venv/bin/activate
         pip install pyopenssl pynput flask requests pymysql flask_login 
         python init.py  
-        deactivate`
+        deactivate
