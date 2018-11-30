@@ -15,13 +15,14 @@ Security Features:
     Error logging, user interaction logging (click and scroll)
 
 How to Use:
-    WINDOWS:
+
+    `WINDOWS: (***NOTE: Very janky. Preferably use Linux instead.***)
         pip install pyopenssl pynput flask requests pymysql flask_login
-        python init.py
+        python init.py`
     
-    LINUX:
+    `LINUX:
         virtualenv venv
         . venv/bin/activate
         pip install pyopenssl pynput flask requests pymysql flask_login 
         python init.py  
-        deactivate
+        deactivate`
